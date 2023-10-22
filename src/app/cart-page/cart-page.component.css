@@ -1,0 +1,128 @@
+.card{
+    height: 60vh;
+    margin: 25px;
+    padding: 25px;
+}
+
+.center{
+        top: 50%;
+        left: 50%;
+        transform: translate(-45%,-45%);
+        text-align: center;
+        position: absolute;
+}
+
+.card-table{
+    display: flex;
+    min-width: none;
+    position: relative;
+    word-wrap :break-word;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.example-card {
+    max-width: 400px;
+    margin: 51px;
+  }
+
+th {
+    font-size: 50px;
+    font-weight: bold;
+    color: red;
+  }
+
+td{
+    font-size: 50px;
+  }
+.BackToRestaurantPage
+{
+    font-size: 20px;
+    height: 30px;
+}
+.RemoveButton
+  {
+
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+
+
+p { 
+  font-family: "Lato", sans-serif; 
+  text-align: justify; 
+} 
+.example-card { 
+  max-width: 1950px; 
+ max-height: 2000px;
+  margin: 70px; 
+  justify-content: center;
+} 
+  
+mat-card-subtitle { 
+  font-size: 28px; 
+} 
+  
+mat-card-title { 
+  color: green; 
+  font-size: 55px; 
+  display: flex; 
+  margin-top: 50px;
+}
+
+.DishImage{
+    width:200px;
+    height:200px;
+    padding:20px;
+    border-radius: 60px;
+  }
+
+
+  .example-button-row {
+    display: table-cell;
+    max-width: 1000px;
+  }
+
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  
+  .PlaceOrder{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background: #52ad9c;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .PlaceOrder:hover{
+    cursor: pointer;
+    background: #428a7d;
+  }
+
+  .bdrop {
+    background-color: #bbbbbbf2;
+    backdrop-filter: blur(4px);
+}

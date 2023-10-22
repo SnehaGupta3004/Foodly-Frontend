@@ -1,0 +1,87 @@
+<div mat-dialog-title>
+    <h1>Address Form</h1>
+</div>
+<form [formGroup]="addressForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>mobileno</mat-label>
+                <input matInput type="text" placeholder="Mobileno" formControlName="mobileno" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>recipienT_NAME</mat-label>
+                <input matInput type="text" placeholder="recipienT_NAME" formControlName="recipienT_NAME" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>flaT_HOUSENO</mat-label>
+                <input matInput type="text" placeholder="flaT_HOUSENO" formControlName="flaT_HOUSENO" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>areA_STREET</mat-label>
+                <input matInput type="text" placeholder="areA_STREET" formControlName="areA_STREET" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>landmark</mat-label>
+                <input matInput type="text" placeholder="landmark" formControlName="landmark" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>pincode</mat-label>
+                <input matInput type="texts" placeholder="pincode" formControlName="pincode" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>state</mat-label>
+                <input matInput type="text" placeholder="state" formControlName="state" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>city</mat-label>
+                <input matInput type="text" placeholder="city" formControlName="city" ngModel required>
+            </mat-form-field>
+        </div>
+
+       
+
+        <!-- <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Image</mat-label> -->
+                <!-- <input type="file" class="file-upload" onchange="console.log(event.target.files)"> -->
+                <!-- <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+                <input hidden (change)="onFileSelected()" #fileInput type="file" id="dish_Path" formControlName="dish_Path">
+            </mat-form-field> -->
+        <!-- </div> -->
+
+        <!-- <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                    <mat-option *ngFor="let val of cuisineCategories" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

@@ -1,0 +1,22 @@
+<header style = "margin: 10px">
+    <div style="padding-bottom: 30px;">
+        <div style="float:left">
+            <a href="#" routerLink="/" class="logo">FOODLY 😀 CORNER</a>
+            <nav>
+                <ul>
+                    <!-- <li class="container">
+                        <a  href="#" routerLink="/cart-page">Cart</a>
+                    </li> -->
+                </ul>
+            </nav>
+        </div>
+        <div style = "float: right;">
+            <div style = "float: left;" *ngIf="userDisplayName.value">
+                <p class="user" >Hi {{userDisplayName.value}}</p>
+            </div>
+            <div style = "float: right; padding-right: 60px;">
+                <button (click)="logout()" class="glow-on-hover">Logout</button>
+            </div>
+        </div>
+</div>
+</header>

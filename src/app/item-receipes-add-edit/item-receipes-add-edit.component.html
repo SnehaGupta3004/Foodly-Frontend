@@ -1,0 +1,75 @@
+<div mat-dialog-title>
+    <h1>Receipe Form</h1>
+</div>
+
+<form [formGroup]="receipeItemForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div formArrayName="Recipe_Steps">
+            <div *ngFor="let child of receipesFormGroups.controls; let i=index"
+            formGroupName="{{i}}">
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Sequence</mat-label>
+                    <input matInput type="number" placeholder="Sequence No." formControlName="sequence"  [(ngModel)]="availableReceipes.sequence" required>
+                </mat-form-field>
+           
+                <mat-form-field appearance="fill">
+                    <mat-label>IngredientName</mat-label>
+                    <mat-select id="ingredienT_NAME" formControlName="ingredienT_NAME" [(ngModel)]="availableReceipes.ingredienT_NAME" required>
+                        <!-- (selectionChange)="changeIngredient($event.value)" -->
+                        <mat-option value="0">--Select--</mat-option> 
+                        <mat-option *ngFor="let val of groceryList ; let i = index"  [value]="val.ingredient_Name">{{val.ingredient_Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+           
+                <mat-form-field appearance="fill">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput type="number" placeholder="Quantity" formControlName="quantity" [(ngModel)]="availableReceipes.quantity" required>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Unit</mat-label>
+                    <mat-select id="unit" formControlName="unit" required>
+                        <mat-option value="0">--Select--</mat-option> 
+                        <mat-option *ngFor="let unit of Units"  [value]="unit">{{unit}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="cdk-visually-hidden">
+                    <mat-label>RESTAURANT_ID</mat-label>
+                    <input matInput type="number" placeholder="Restaurant ID" formControlName="restauranT_ID">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="cdk-visually-hidden">
+                    <mat-label>DISH_ID</mat-label>
+                    <input matInput type="number" placeholder="Dish ID" formControlName="disH_ID">
+                </mat-form-field>
+            
+                <mat-form-field appearance="fill" style="width: 200px;height: 78px;">
+                    <mat-label>Remark</mat-label>
+                    <textarea matInput cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="10" type="text" placeholder="Remarks" formControlName="remarks" required></textarea>
+                </mat-form-field>
+                <button mat-icon-button color="primary" (click)="addNewRow()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            </div>
+
+        </div>
+       
+       
+    </div>
+    
+   
+
+
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{'Save'}}</button>
+    </div>
+</form>

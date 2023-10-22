@@ -1,0 +1,46 @@
+
+.example-card {
+  max-width: 700px;
+  margin: 3px;
+}
+
+.example-card:hover
+{
+  background-color: #b6bea8
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+  padding-top: 2%;
+  padding-left: 115px;
+}
+
+.mat-success {
+  background-color: green;
+  color: #fff;
+}
+
+.DishImage{
+  position:relative;
+  width:350px;
+  height:290px;
+  padding:10px;
+  border-radius: 25px;
+}
+
+mat-card-title{
+  font-size: 20px;
+}
+
+.RestaurantName{
+  margin: 5px;
+  padding-left: 30px;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: rgb(10, 10, 10);
+}

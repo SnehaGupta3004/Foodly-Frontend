@@ -1,0 +1,57 @@
+<div mat-dialog-title>
+    <h1>FoodItem Form</h1>
+</div>
+<form [formGroup]="foodItemForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>ID</mat-label>
+                <input matInput type="text" placeholder="Food ID" formControlName="dish_ID" ngModel required> 
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" placeholder="Food name" formControlName="dish_Name" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" placeholder="Food Price" formControlName="dish_Price" ngModel required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline"  class="cdk-visually-hidden">
+                <mat-label>RESTAURANT_ID</mat-label>
+                <input matInput type="number" placeholder="Restaurant ID" formControlName="RESTAURANT_ID">
+            </mat-form-field>
+        </div>
+
+        <!-- <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Image</mat-label> -->
+                <!-- <input type="file" class="file-upload" onchange="console.log(event.target.files)"> -->
+                <!-- <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+                <input hidden (change)="onFileSelected()" #fileInput type="file" id="dish_Path" formControlName="dish_Path">
+            </mat-form-field>
+        </div> -->
+
+        <!-- <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                    <mat-option *ngFor="let val of cuisineCategories" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

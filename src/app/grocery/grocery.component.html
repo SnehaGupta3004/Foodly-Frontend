@@ -1,0 +1,48 @@
+
+<div class="main-body" style="padding-left: 500px; padding-right: 500px;">
+    <div>
+    <mat-form-field>
+      <mat-label style="font-size:40px">Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza" #input>
+    </mat-form-field>
+
+    <div (click)="CartPage()">
+        <button class="material-icons" style="margin-left: 2800px; color:red;font-size: 100px;">shopping_cart</button>
+        <span class="TotalCartItemNumber">{{TotalCartItemNumber}}</span>
+    </div>
+    </div>
+  
+    <!-- <div class="container">
+        <div class="searchItem">
+            <a (click)="filter('Dry Fruits')">
+                <h1>Dry Fruits</h1>
+            </a>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <mat-card class="category-card" *ngFor="let category of Categories" (click)="getGroceryList(category)">
+            <mat-card-header>
+              <mat-card-title class="RestaurantName">{{category.Name}}</mat-card-title>
+              <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="category.Image" class = "DishImage">
+          </mat-card>
+        </div>
+    </div>
+
+
+
+    <div class="grocery-container">
+        <mat-card class="grocery-card" *ngFor="let grocery of availableGroceries" (click)="getCategory(grocery)">
+            <mat-card-header>
+              <mat-card-title class="RestaurantName">{{grocery.ingredient_Name}}</mat-card-title>
+              <mat-card-title>{{grocery.price | currency:'INR'}}</mat-card-title>
+            </mat-card-header>
+            <!-- <img mat-card-image [src]="grocery.restaurant_Image" class = "DishImage"> -->
+            <mat-card-actions style="color: white;">
+            <button class="AddButton" (click)="addToCart(grocery)">Add to cart</button>
+            <button class="RemoveButton" (click)="removeFromcart(grocery.ingredient_Id)">Remove from cart</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
