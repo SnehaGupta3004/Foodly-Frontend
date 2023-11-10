@@ -7,10 +7,13 @@
 					<label for="chk" aria-hidden="true">Sign up</label>
 					<mat-form-field appearance="fill" style="padding-left: 70px; font-size: smaller;">
 						<mat-label>Role</mat-label>
-						<mat-select id="Role_ID" formControlName="unit">
-							<mat-option *ngFor="let role of Roles"  [value]="role">{{role}}
+						
+						<mat-select id="Role_ID" formControlName="Role_ID">
+							<mat-option value="0">--Select--</mat-option> 
+							<mat-option *ngFor="let val of availableRoles ; let i = index"  [value]="val.name" (click)="getElementId(val)">{{val.name}}
 							</mat-option>
 						</mat-select>
+
 					</mat-form-field>
 					<input type="text" name="txt" placeholder="Username" [(ngModel)]="signupObj.Username">
 					<input type="text" name="txt" placeholder="Mobile Number" [(ngModel)]="signupObj.Mobile_No">

@@ -58,7 +58,7 @@ export class ItemReceipesAddEditComponent implements OnInit{
   // unit= new FormControl('', VALIDATORS);
 
   receipeItemForm: FormGroup;  
-  Units: any = ['teaspoons', 'tablespoons', 'cups', 'grams','pounds','litres'];
+  Units: any = ['teaspoons', 'tablespoons', 'cups', 'grams','kilograms','pounds','litres'];
   
   constructor
   (

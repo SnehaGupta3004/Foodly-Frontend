@@ -1,3 +1,37 @@
 {
-  "results": []
+  "results": [
+    {
+      "ingredient_Id": 5,
+      "ingredient_Name": "Figs",
+      "quantity": 500,
+      "unit": "gm",
+      "price": 699,
+      "category_id": 3,
+      "category_name": "Dry Fruits",
+      "brand": "Happilo",
+      "id": 1
+    },
+    {
+      "ingredient_Id": 6,
+      "ingredient_Name": "Walnuts",
+      "quantity": 500,
+      "unit": "gm",
+      "price": 373,
+      "category_id": 3,
+      "category_name": "Dry Fruits",
+      "brand": "Happilo",
+      "id": 2
+    },
+    {
+      "ingredient_Id": 6,
+      "ingredient_Name": "Walnuts",
+      "quantity": 500,
+      "unit": "gm",
+      "price": 373,
+      "category_id": 3,
+      "category_name": "Dry Fruits",
+      "brand": "Happilo",
+      "id": 3
+    }
+  ]
 }

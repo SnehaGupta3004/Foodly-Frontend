@@ -26,10 +26,10 @@ srcResult:any;
     )
     {
     this.foodItemForm=this._fb.group({
-      dish_ID:'',
+      dish_ID:Number(),
       dish_Name:'',
       dish_Price:'',
-      RESTAURANT_ID:localStorage.getItem('resultsmobile_No')
+      Mobile_No:localStorage.getItem('resultsmobile_No')
     });
     }
 
@@ -38,6 +38,7 @@ srcResult:any;
     }
 
     onFormSubmit(){
+      debugger
     if (this.foodItemForm.valid) {
       debugger
           if(this.data){

@@ -34,11 +34,9 @@
               <button class="RemoveButton" (click)="removeProduct(row)">Remove from cart</button>
             </td>
           </ng-container>
-         
     
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
         </table>
     </div>
 

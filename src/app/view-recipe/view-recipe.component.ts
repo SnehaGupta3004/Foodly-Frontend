@@ -38,8 +38,8 @@ export class ViewRecipeComponent implements OnInit {
       for(var items of res.results)
       debugger
       this.dataSource=new MatTableDataSource<Recipe>(items);
-      // this.dataSource.sort=this.sort;
-      // this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
+      this.dataSource.paginator=this.paginator;
     })
   }
 

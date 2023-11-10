@@ -10,14 +10,14 @@ import { CoreService } from '../core/core.service';
 })
 export class UserLoginComponent {
 signupUsers:any[]=[];
-Roles: any = ['Admin', 'RestaurantOwner', 'Customer'];
+availableRoles: any[] = [];
 signupObj:any={
   Mobile_No:'',
   Email_Id:'',
   Password:'',
   Username:'',
   CITY:'',
-  Role_ID:''
+  Role_ID:Number(localStorage.getItem('Role_ID'))
 };
 loginObj:any={
   User_ID:'',
@@ -30,14 +30,31 @@ constructor(
   private _core:CoreService
   ){}
 ngOnInit():void{
+  this.availableRoles = [
+    {
+      Role_ID: 3,
+        name: "RestaurantOwner",
+        val: "RestaurantOwner"
+    },
+    {
+      Role_ID: 2,
+        name: "Customer",
+        val: "Customer"
+    }];
+
   const LocalData=localStorage.getItem('signUpusers');
   if(LocalData!=null){
     this.signupUsers=JSON.parse(LocalData);
   }
 }
 
+
+getElementId(elemRef:any){
+  debugger
+  localStorage.setItem('Role_ID',elemRef.Role_ID)
+  }
+
 onSignUp(){
-  //this.signupUsers.push(this.signupObj);
   debugger
   this.accService.onSignUp(this.signupObj).subscribe((res:any)=>{
     console.log('SignUpRes',res);
@@ -49,7 +66,7 @@ onSignUp(){
     Password:'',
     Username:'',
     CITY:'',
-    Role_ID:''
+    Role_ID:localStorage.getItem('Role_ID')
   };
 }
 
