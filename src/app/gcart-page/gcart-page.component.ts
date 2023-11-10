@@ -13,6 +13,7 @@ import { OrderPlacedComponent } from '../order-placed/order-placed.component';
 import { GcartService } from '../services/gcart/gcart.service';
 import { HttpClient } from '@angular/common/http';
 import { GroceryService } from '../services/grocery/grocery.service';
+import { OrdersService } from '../services/orders/orders.service';
 
 @Component({
   selector: 'app-gcart-page',
@@ -28,13 +29,14 @@ export class GcartPageComponent implements OnInit{
   GrandTotal!:any;
   foodList=new BehaviorSubject<any>([]);
   settingForm!:FormGroup;
-  jsonDataResult:any;
+  jsonDataResult:any=[];
   displayedColumns: string[] = [
     'ingredient_Id',
     'ingredient_Name',
     'price',
     'Action',
   ];
+  b:any;
   FoodObj:any={
     User_ID:localStorage.getItem('resultsmobile_No'),
     Role_ID:Number(localStorage.getItem('resultsRole_ID'))
@@ -51,12 +53,29 @@ export class GcartPageComponent implements OnInit{
     private dialogRef:MatDialog,
     private http:HttpClient,
     private gcartservice:GcartService,
-    private groceryService:GroceryService
+    private groceryService:GroceryService,
+    private _orderService:OrdersService
   ) {}
 
 
   ngOnInit(){
     this.GetAllGCartItems();
+    this.gcartservice.GetGCartItems().subscribe(response=>{
+      this.jsonDataResult=response;
+      debugger
+      console.log(this.jsonDataResult)
+      this.b={
+        "OrderItems": this.jsonDataResult,
+        CUSTOMER_ID:localStorage.getItem('resultsmobile_No'),
+        RESTAURANT_ID:localStorage.getItem('OnClickRestaurantMobileNo'),
+        ITEM_TOTAL:Number(localStorage.getItem('ITEM_TOTAL')),
+        TAXES:Number(localStorage.getItem('TAXES')),
+        DELIVERY:49.00,
+        TOTALCART_VALUE:Number(localStorage.getItem('TOTALCART_VALUE')),
+        ADDRESS_ID:Number(localStorage.getItem('ADDRESS_ID')),
+        ORDERTYPE:"GROCERY"
+      }
+    });
       this.allProducts=localStorage.getItem('grandTotal');
       this.TaxCharges=Number(this.allProducts*0.05+20).toFixed(2);
       this.GrandTotal=(Number(this.allProducts)+Number(this.TaxCharges)+49).toFixed(2);
@@ -68,6 +87,16 @@ export class GcartPageComponent implements OnInit{
         Validators.max(5)
       ])
     })
+
+
+    
+    localStorage.setItem('ITEM_TOTAL',this.allProducts);
+    localStorage.setItem('TAXES',this.TaxCharges);
+    localStorage.setItem('TOTALCART_VALUE',this.GrandTotal);
+
+
+
+    
   }
 
     
@@ -122,6 +151,9 @@ export class GcartPageComponent implements OnInit{
     }
 
     openDialog(){
+      debugger
+      this._orderService.placeOrder(this.b).subscribe((res:any)=>{
+        });
       debugger
     this.dialogRef.open(OrderPlacedComponent,{
       backdropClass: "bdrop"

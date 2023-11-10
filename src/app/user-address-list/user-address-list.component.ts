@@ -115,6 +115,7 @@ selection=new SelectionModel<Address>(false,[]);
       debugger
       localStorage.setItem('AddressDetails',JSON.stringify(data.recipienT_NAME+"  "+Number(data.mobileno)+"  "+data.areA_STREET+"  "+data.landmark+"  "+data.flaT_HOUSENO+"  "+data.pincode+"  "+data.city+"  "+data.state));
       localStorage.setItem('LandMarkDetails',JSON.stringify(data.landmark));
+      localStorage.setItem('ADDRESS_ID',JSON.stringify(data.srno));
       console.log(this.selection.selected)
       }
       

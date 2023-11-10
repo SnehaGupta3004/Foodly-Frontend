@@ -77,6 +77,7 @@ export class CartService {
     addToCart(FoodItems:any){
       this.cartDataList.push(FoodItems);
       this.productList.next(this.cartDataList);
+      debugger
       this.getTotalAmount();
     }
     

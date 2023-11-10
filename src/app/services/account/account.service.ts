@@ -13,5 +13,10 @@ export class AccountService {
   {
   return this._httpClient.post('https://localhost:44325/User/GetUserProfile',obj);
   }
+
+  onSignUp(obj:any):Observable<any>
+  {
+    return this._httpClient.post('https://localhost:44325/User/SignUp',obj);
+  }
   
 }

@@ -1,14 +1,14 @@
-<button class = "BackToRestaurantPage" routerLink="/customer-restaurant-dish-list">Back to restaurant page</button>
+<!-- <button class = "BackToRestaurantPage" routerLink="/customer-restaurant-dish-list">Back to restaurant page</button> -->
 
 
 <ng-container *ngIf="products.length!=0">
-    <div class="table-container" style = "padding-left: 600px; padding-right: 600px;">
+    <div class="table-container">
         <table  mat-table [dataSource]="dataSource" matSort>
     
           <!-- ID Column -->
           <ng-container matColumnDef="dish_ID">
-            <th mat-header-cell [hidden]="show" *matHeaderCellDef mat-sort-header> ID </th>
-            <td mat-cell [hidden]="show" *matCellDef="let row"> {{row.dish_ID}} </td>
+            <th mat-header-cell [hidden]="!show" *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell [hidden]="!show" *matCellDef="let row"> {{row.dish_ID}} </td>
           </ng-container>
 
           <ng-container matColumnDef="dish_Path">
@@ -42,7 +42,6 @@
         </table>
     </div>
 
-    <div style = "padding-left: 1000px; padding-right: 800px;">
         <div class="container">
           <mat-card class="example-card"> 
             <mat-card-header> 
@@ -54,30 +53,28 @@
               <mat-card-title>Grand Total: {{GrandTotal}} </mat-card-title>
             </mat-card-header> 
             <br>
-            <mat-card-actions> 
-              <button (click)="cartPageName()" mat-stroked-button  style="float: right; font-size: x-large;color: blue;" routerLink="/user-address-list" >
+            <div class="container"> 
+              <button class="obutton" (click)="cartPageName()" style="color:green; font-size: 50px;float: right;" routerLink="/user-address-list" >
                 Select Address 
               </button> 
-            </mat-card-actions> 
+            </div> 
           </mat-card>
   
           <mat-card class="example-card"> 
             <mat-card-header> 
-              <mat-card-title>Address</mat-card-title> 
+              <mat-card-title style="font-weight: bold;">Address:</mat-card-title> 
               <br>
             </mat-card-header> 
-            <mat-card-content style="font-size: large;">
+            <mat-card-title>
               {{addressDetails}}
-            </mat-card-content>
+            </mat-card-title>
             <br>
           </mat-card>
         </div>
-    </div>
 
     <div class="container">
-      <img src="" alt="">
-      <button (click)="openDialog()" style="color:red; font-size: 80px;border: transparent;float: right;">Place Order</button>
-      </div>
+      <button class="obutton" (click)="openDialog()" style="color:red; font-size: 50px;float: right;">Place Order</button>
+    </div>
 </ng-container>
 
 <ng-container *ngIf="products.length==0"> 

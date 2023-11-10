@@ -3,11 +3,21 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form autocomplete="off">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="Mobile Number" [(ngModel)]="signupObj.mobileNumber">
-					<input type="email" name="email" placeholder="Email" [(ngModel)]="signupObj.email">
-					<input type="password" name="pswd" placeholder="Password" [(ngModel)]="signupObj.password">
+					<mat-form-field appearance="fill" style="padding-left: 70px; font-size: smaller;">
+						<mat-label>Role</mat-label>
+						<mat-select id="Role_ID" formControlName="unit">
+							<mat-option *ngFor="let role of Roles"  [value]="role">{{role}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<input type="text" name="txt" placeholder="Username" [(ngModel)]="signupObj.Username">
+					<input type="text" name="txt" placeholder="Mobile Number" [(ngModel)]="signupObj.Mobile_No">
+					<input type="email" name="email" placeholder="Email" [(ngModel)]="signupObj.Email_Id">
+					<input type="password" name="pswd" placeholder="Password" [(ngModel)]="signupObj.Password">
+					<input type="text" name="txt" placeholder="City" [(ngModel)]="signupObj.CITY">
+					<!-- <input type="text" name="number" placeholder="Role" [(ngModel)]="signupObj.Role_ID"> -->
 					<button (click)="onSignUp()">Sign up</button>
 				</form>
 			</div>

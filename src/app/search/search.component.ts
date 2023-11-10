@@ -16,6 +16,7 @@ this.route.params.subscribe(params=>{
 })
 }
 search(): void{
+debugger
 if(this.searchItem)
 this.router.navigateByUrl('/search/'+this.searchItem)
 }

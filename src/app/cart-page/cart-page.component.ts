@@ -35,6 +35,7 @@ export class CartPageComponent {
       'dish_Price',
       'Action',
     ];
+    b:any;
     FoodObj:any={
       User_ID:localStorage.getItem('resultsmobile_No'),
       Role_ID:Number(localStorage.getItem('resultsRole_ID'))
@@ -48,12 +49,24 @@ export class CartPageComponent {
       private fb:FormBuilder,
       private router:Router,
       private cartService:CartService,
-      private dialogRef:MatDialog
+      private dialogRef:MatDialog,
+      private _ordersService:OrdersService
+
     ) {}
+    
     ngOnInit(){
       this.cartService.getFoodData().subscribe(res=>{
         this.products=res;
-        debugger
+        // let dataforPass=[];
+        // debugger
+        // for(let item of this.products){
+        //     let result={
+        //     "DISH_ID":item.dish_ID,
+        //     "DISH_NAME": item.dish_Name
+        //   }
+        //   dataforPass.push(result)
+        // }
+        // debugger
         this.dataSource=new MatTableDataSource<FoodItems>(this.products);
         this.dataSource.sort=this.sort;
         this.dataSource.paginator=this.paginator;
@@ -61,7 +74,23 @@ export class CartPageComponent {
         this.TaxCharges=Number(this.allProducts*0.05+20).toFixed(2);
         this.GrandTotal=(Number(this.allProducts)+Number(this.TaxCharges)+49).toFixed(2);
         this.addressDetails=localStorage.getItem('AddressDetails');
-        debugger
+
+        localStorage.setItem('ITEM_TOTAL',this.allProducts);
+        localStorage.setItem('TAXES',this.TaxCharges);
+        localStorage.setItem('TOTALCART_VALUE',this.GrandTotal);
+
+
+        this.b={
+          "OrderItems": this.products,
+          CUSTOMER_ID:localStorage.getItem('resultsmobile_No'),
+          RESTAURANT_ID:localStorage.getItem('OnClickRestaurantMobileNo'),
+          ITEM_TOTAL:Number(localStorage.getItem('ITEM_TOTAL')),
+          TAXES:Number(localStorage.getItem('TAXES')),
+          DELIVERY:49.00,
+          TOTALCART_VALUE:Number(localStorage.getItem('TOTALCART_VALUE')),
+          ADDRESS_ID:Number(localStorage.getItem('ADDRESS_ID')),
+          ORDERTYPE:"DISH"
+        }
         debugger
       })
 
@@ -73,6 +102,7 @@ export class CartPageComponent {
         ])
       })
     }
+
 
     removeProduct(item:any){
       debugger
@@ -111,11 +141,25 @@ export class CartPageComponent {
 
         placeOrder(){
         debugger
+        this._ordersService.placeOrder(this.b).subscribe((res:any)=>{
+        if(res) 
+        {
+         // this.groceryList = res.results[0];
+         // console.log(this.groceryList);
+        }
+        });
         this.router.navigateByUrl('/order-placed');
       }
 
       openDialog(){
         debugger
+        this._ordersService.placeOrder(this.b).subscribe((res:any)=>{
+        if(res) 
+        {
+         // this.groceryList = res.results[0];
+         // console.log(this.groceryList);
+        }
+        });
       this.dialogRef.open(OrderPlacedComponent,{
         backdropClass: "bdrop"
       });

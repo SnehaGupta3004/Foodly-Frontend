@@ -63,7 +63,7 @@ export class RestaurantOwnerComponent implements OnInit {
       }
    
       getFoodItemsList(){
-        debugger
+      debugger
       this._foodItemService.getFoodItemsList(this.FoodObj).subscribe((res:any)=>{
         console.log('res',res);
           this.availableFoodItems=[];
@@ -95,6 +95,7 @@ export class RestaurantOwnerComponent implements OnInit {
       }
 
       openEditForm(data: any) {
+        debugger
         const dialogRef = this._dialog.open(FoodItemsAddEditComponent, {
           data,
         });
@@ -106,7 +107,7 @@ export class RestaurantOwnerComponent implements OnInit {
             }
           },
         });
-      }
+       }
 
       primeFoodItem(data:any){
         debugger

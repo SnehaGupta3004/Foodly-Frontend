@@ -10,11 +10,12 @@
                 </ul>
             </nav>
         </div>
+        
         <div style = "float: right;">
-            <div style = "float: left;" *ngIf="userDisplayName.value">
+            <div style = "float: left;"  *ngIf="userDisplayName.value">
                 <p class="user" >Hi {{userDisplayName.value}}</p>
             </div>
-            <div style = "float: right; padding-right: 60px;">
+            <div style = "float: right; padding-right: 60px;"  *ngIf="userDisplayName.value">
                 <button (click)="logout()" class="glow-on-hover">Logout</button>
             </div>
         </div>

@@ -9,6 +9,7 @@ import { FoodItemsService } from '../services/food-items.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart/cart.service';
+import { ViewRecipeComponent } from '../view-recipe/view-recipe.component';
 
 @Component({
   selector: 'app-customer-restaurant-dish-list',
@@ -43,23 +44,20 @@ export class CustomerRestaurantDishListComponent {
     private _coreService: CoreService,
     private fb:FormBuilder,
     private router:Router,
-    private cartService:CartService
+    private cartService:CartService,
+    private dialogRef:MatDialog
   ) {}
   ngOnInit(){
     {
       this.getFoodItemsList();
-      debugger
       this.cartService.getFoodData().subscribe(res=>{
         this.TotalCartItemNumber=res.length;
       })
-      debugger
       this._foodItemService.getFoodItemsList(this.FoodObj).subscribe((res:any)=>{
         this.productList=res.results[0];
-        debugger
         this.productList.array.forEach((a:any) => {
           Object.assign(a,{quantity:1, total:a.price})
         });
-        debugger
       })
     }
   }
@@ -78,7 +76,6 @@ export class CustomerRestaurantDishListComponent {
       this._foodItemService.getFoodItemsList(this.FoodObj).subscribe((res:any)=>{
         console.log('res',res);
           for(var items of res.results)
-        debugger
           this.dataSource=new MatTableDataSource<FoodItems>(items);
           this.dataSource.sort=this.sort;
           this.dataSource.paginator=this.paginator;
@@ -112,5 +109,13 @@ export class CustomerRestaurantDishListComponent {
 
       CartPage(){
         this.router.navigateByUrl('/cart-page');
+      }
+
+      ViewRecipe(data:any){
+        localStorage.setItem('OnClickDishID',data.dish_ID)
+        this.router.navigateByUrl('/view-recipe');
+      //   this.dialogRef.open(ViewRecipeComponent,{
+      //   backdropClass: 'backdropBackground'
+      // });
       }
 }

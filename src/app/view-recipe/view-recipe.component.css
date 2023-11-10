@@ -1,0 +1,14 @@
+.container{
+    height: 200px;
+    width: 1000px;
+}
+
+mat-dialog-title{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+mat-card-header{
+    font-size: 60px;
+    font-weight: bolder;
+}

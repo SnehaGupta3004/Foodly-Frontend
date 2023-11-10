@@ -1,16 +1,16 @@
 
-<div class="main-body" style="padding-left: 500px; padding-right: 500px;">
+<div class="main-body">
     <div>
-    <mat-form-field>
-      <mat-label style="font-size:40px">Filter</mat-label>
+    <mat-form-field  style="font-size:20px">
+      <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza" #input>
     </mat-form-field>
-
-    <div (click)="CartPage()">
-        <button class="material-icons" style="margin-left: 2800px; color:red;font-size: 100px;">shopping_cart</button>
-        <span class="TotalCartItemNumber">{{TotalCartItemNumber}}</span>
+  </div>
+    <div (click)="CartPage()" style="padding-left: 1100px;">  
+      <button class="material-icons" style="color:red;font-size: 40px; ">shopping_cart</button>
+      <span class="TotalCartItemNumber">{{TotalCartItemNumber}}</span>
     </div>
-    </div>
+    
   
     <div class="table-container">
       <table  mat-table [dataSource]="dataSource" matSort>
@@ -48,6 +48,7 @@
             </form> -->
             <button class="AddButton" (click)="addToCart(row)">Add to cart</button>
             <button class="RemoveButton" (click)="removeFromcart()">Remove from cart</button>
+            <button class="ViewRecipeButton"  *ngIf="row.isPrime==1" (click)="ViewRecipe(row)">View Recipe</button>
           </td>
         </ng-container>
   

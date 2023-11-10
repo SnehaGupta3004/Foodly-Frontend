@@ -1,8 +1,8 @@
-<button class = "BackToRestaurantPage" routerLink="/grocery">Back to restaurant page</button>
+<button class = "BackToRestaurantPage" routerLink="/grocery">Back to grocery page</button>
 
 
 <ng-container *ngIf="jsonDataResult.length!=0">
-    <div class="table-container" style = "padding-left: 600px; padding-right: 600px;">
+    <div class="table-container">
         <table  mat-table [dataSource]="jsonDataResult" matSort>
     
           <ng-container matColumnDef="ingredient_Id">
@@ -34,18 +34,15 @@
         </table>
     </div>
 
-    <div style = "padding-left: 1000px; padding-right: 800px;">
+    <div style = "padding-right: 8px;">
         <div class="container">
           <mat-card class="example-card"> 
             <mat-card-header> 
               <mat-card-title>Item Total: {{allProducts}}</mat-card-title> 
               <mat-card-title>Tax & Restaurant Charges: {{TaxCharges}}</mat-card-title> 
-              <br>
               <mat-card-title>Delivery Charge: 49.00 </mat-card-title> 
-              <br>
               <mat-card-title>Grand Total: {{GrandTotal}} </mat-card-title>
             </mat-card-header> 
-            <br>
             <mat-card-actions> 
               <button mat-stroked-button  style="float: right; font-size: x-large;color: blue;" routerLink="/user-address-list" (click)="cartPageName()" >
                 Select Address 
@@ -68,7 +65,7 @@
 
     <div class="container">
       <img src="" alt="">
-      <button (click)="openDialog()" style="color:red; font-size: 80px;border: transparent;float: right;">Place Order</button>
+      <button (click)="openDialog()" style="color:red; font-size:40px;border: transparent;float: right;">Place Order</button>
       </div>
 </ng-container>
 

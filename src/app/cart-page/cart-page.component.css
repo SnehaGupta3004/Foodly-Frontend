@@ -23,23 +23,24 @@
 }
 
 .example-card {
-    max-width: 400px;
-    margin: 51px;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 10px;
   }
 
 th {
-    font-size: 50px;
+    font-size: 20px;
     font-weight: bold;
     color: red;
   }
 
 td{
-    font-size: 50px;
+    font-size: 20px;
   }
 .BackToRestaurantPage
 {
-    font-size: 20px;
-    height: 30px;
+    font-size: 10px;
+    height: 10px;
 }
 .RemoveButton
   {
@@ -47,12 +48,12 @@ td{
     background-color: red;
     border: none;
     color: white;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 30px;
-    margin-left: 20px;
+    font-size: 10px;
+    margin-left: 10px;
     cursor: pointer;
   }
   
@@ -64,7 +65,7 @@ p {
 } 
 .example-card { 
   max-width: 1950px; 
- max-height: 2000px;
+  max-height: 2000px;
   margin: 70px; 
   justify-content: center;
 } 
@@ -75,16 +76,19 @@ mat-card-subtitle {
   
 mat-card-title { 
   color: green; 
-  font-size: 55px; 
+  font-size: 20px; 
   display: flex; 
-  margin-top: 50px;
+}
+
+.obutton{
+  cursor: pointer;
+  font-size: 5px;
 }
 
 .DishImage{
-    width:200px;
-    height:200px;
-    padding:20px;
-    border-radius: 60px;
+    width:150px;
+    height:150px;
+    border-radius: 40px;
   }
 
 
@@ -125,4 +129,11 @@ mat-card-title {
   .bdrop {
     background-color: #bbbbbbf2;
     backdrop-filter: blur(4px);
+}
+
+
+.mat-card-content{
+  font-size: 55px;
+  font-weight: bold;
+  display: flex;
 }

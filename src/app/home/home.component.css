@@ -55,12 +55,12 @@ li a :hover{
 
 
 .example-card {
-    width: 250px;
-    margin: 40px;
+    width: 200px;
+    margin: 20px;
   }
 
 .example-card-SuggestedDish {
-    width: 300px;
+    width: 200px;
     margin: 40px;
   }
 
@@ -81,19 +81,19 @@ li a :hover{
 }
 
 .DishImage{
-    position:relative;
-    width:250px;
-    height:200px;
-    padding:10px;
-    border-radius: 70px;
+  width:200px;
+  height:150px;
+  padding:5px;
+  border-radius: 10px;
+  border-bottom:10px
   }
 
 .SuggestedDishImage{
-    position:relative;
-    width:280px;
+    width:200px;
     height:150px;
-    padding:10px;
-    border-radius: 40px;
+    padding:5px;
+    border-radius: 10px;
+    border-bottom:10px
   }
 
   mat-card-title{
@@ -101,15 +101,13 @@ li a :hover{
   }
 
   .RestaurantName{
-    margin: 20px;
-    font-size: 30px;
+    font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     color: rgb(10, 10, 10);
   }
 
   .RestaurantDishName{
-    margin: 5px;
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;

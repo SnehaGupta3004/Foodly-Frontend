@@ -10,10 +10,14 @@ import { CoreService } from '../core/core.service';
 })
 export class UserLoginComponent {
 signupUsers:any[]=[];
+Roles: any = ['Admin', 'RestaurantOwner', 'Customer'];
 signupObj:any={
-  mobileNumber:'',
-  email:'',
-  password:''
+  Mobile_No:'',
+  Email_Id:'',
+  Password:'',
+  Username:'',
+  CITY:'',
+  Role_ID:''
 };
 loginObj:any={
   User_ID:'',
@@ -33,12 +37,19 @@ ngOnInit():void{
 }
 
 onSignUp(){
-  this.signupUsers.push(this.signupObj);
+  //this.signupUsers.push(this.signupObj);
+  debugger
+  this.accService.onSignUp(this.signupObj).subscribe((res:any)=>{
+    console.log('SignUpRes',res);
+  })
   localStorage.setItem('signUpusers',JSON.stringify(this.signupUsers));
   this.signupObj={
-    userName:'',
-    email:'',
-    password:''
+    Mobile_No:'',
+    Email_Id:'',
+    Password:'',
+    Username:'',
+    CITY:'',
+    Role_ID:''
   };
 }
 
@@ -51,7 +62,6 @@ onLogin()
     console.log('res',res);
     localStorage.setItem('resultsmobile_No',res.results[0].mobile_No);
     localStorage.setItem('resultsRole_ID',res.results[0].role_ID);
-    debugger
     localStorage.setItem('resultsUsername',res.results[0].username);
     localStorage.setItem('responseStatusCode',res.responseStatusCode);
     if(res.responseStatusCode==2)
@@ -61,6 +71,9 @@ onLogin()
       }
       else if(res.results[0].role_ID==2){
         this.router.navigateByUrl('/dashboard');
+      }
+      else if(res.results[0].role_ID==1){
+        this.router.navigateByUrl('/admin');
       }
     }
     else if(res.responseStatusCode==4)

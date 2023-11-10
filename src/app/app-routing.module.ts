@@ -10,6 +10,8 @@ import { OrderPlacedComponent } from './order-placed/order-placed.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GroceryComponent } from './grocery/grocery.component';
 import { GcartPageComponent } from './gcart-page/gcart-page.component';
+import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path:'',component:UserLoginComponent},
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path:'order-placed',component:OrderPlacedComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'grocery',component:GroceryComponent},
-  {path:'gcart-page',component:GcartPageComponent}
+  {path:'gcart-page',component:GcartPageComponent},
+  {path:'view-recipe',component:ViewRecipeComponent},
+  {path:'admin',component:AdminComponent}
 ];
 
 @NgModule({
@@ -31,3 +35,13 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
+
+
+
+
+
+
+

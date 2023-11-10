@@ -1,0 +1,85 @@
+
+th {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
+td{
+  font-size: 20px;
+}
+
+.example-card {
+    width: 550px;
+    margin: 80px;
+  }
+
+.example-card:hover
+  {
+    background-color: #b6bea8
+  }
+  
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+.mat-success {
+    background-color: green;
+    color: #fff;
+}
+
+.DishImage{
+    position:relative;
+    width:100px;
+    height:100px;
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  mat-card-title{
+    font-size: 5px;
+  }
+
+  .RestaurantName{
+    margin: 20px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: rgb(10, 10, 10);
+  }
+
+  .Disable{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .Enable{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .Enable:hover{
+    background-color: #3e8e41;
+  }
+
+  .Disable:hover{
+    background-color: rgb(161, 62, 62);
+  }

@@ -16,15 +16,12 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit(){
     debugger
-    this.userDisplayName= new BehaviorSubject(localStorage.getItem('resultsUsername') ?? '{}');
-    console.log(this.userDisplayName.value);
+    this.userDisplayName= new BehaviorSubject(localStorage.getItem('resultsUsername') ?? 0);
   }
 
   logout(){
-    debugger
     localStorage.clear();
     this.router.navigateByUrl('/login');
-    console.log(this.userDisplayName.value);
   }
 
 

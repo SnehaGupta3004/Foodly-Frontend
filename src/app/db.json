@@ -1,26 +1,3 @@
 {
-  "results": [
-    {
-      "ingredient_Id": 16,
-      "ingredient_Name": "French Beans",
-      "quantity": 1,
-      "unit": "kg",
-      "price": 50,
-      "category_id": 11,
-      "category_name": "Fresh Vegetables",
-      "brand": "SMART BAZAAR",
-      "id": 1
-    },
-    {
-      "ingredient_Id": 17,
-      "ingredient_Name": "Brinjal",
-      "quantity": 1,
-      "unit": "kg",
-      "price": 40,
-      "category_id": 11,
-      "category_name": "Fresh Vegetables",
-      "brand": "SMART BAZAAR",
-      "id": 2
-    }
-  ]
+  "results": []
 }

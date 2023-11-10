@@ -10,6 +10,7 @@ import { CoreService } from '../core/core.service';
   styleUrls: ['./food-items-add-edit.component.css']
 })
 export class FoodItemsAddEditComponent implements OnInit{
+show!:boolean;
 foodItemForm:FormGroup;
 @ViewChild('UploadFileInput') uploadFileInput!: ElementRef;
 myfilename = 'Select File';
@@ -23,7 +24,6 @@ srcResult:any;
     @Inject(MAT_DIALOG_DATA) public data:any,
     private _coreService:CoreService
     )
-
     {
     this.foodItemForm=this._fb.group({
       dish_ID:'',
@@ -38,32 +38,31 @@ srcResult:any;
     }
 
     onFormSubmit(){
-    debugger
     if (this.foodItemForm.valid) {
-    if(this.data){
-    this._foodItem.updateFoodItems(this.foodItemForm.value).subscribe({
-    next: (val: any) => {
-      this._coreService.openSnackBar('Item updated successfully','Done');
-      this._dialogRef.close(true);
-    },
-    error: (err: any) => {
-      console.error(err);
-    },
-  });
-}
-else{
-  debugger
-  this._foodItem.addFoodItems(this.foodItemForm.value).subscribe({
-    next: (val: any) => {
-      this._coreService.openSnackBar('Item added successfully','Done');
-      this._dialogRef.close(true);
-    },
-    error: (err: any) => {
-      console.error(err);
-    },
-  });
-}
-       
+      debugger
+          if(this.data){
+          this._foodItem.updateFoodItems(this.foodItemForm.value).subscribe({
+          next: (val: any) => {
+            this._coreService.openSnackBar('Item updated successfully','Done');
+            this._dialogRef.close(true);
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        });
+        }
+        else{
+          debugger
+          this._foodItem.addFoodItems(this.foodItemForm.value).subscribe({
+            next: (val: any) => {
+              this._coreService.openSnackBar('Item added successfully','Done');
+              this._dialogRef.close(true);
+            },
+            error: (err: any) => {
+              console.error(err);
+            },
+          });
+        }
       }
     }
 

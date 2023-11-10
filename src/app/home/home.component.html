@@ -1,39 +1,27 @@
 <app-search></app-search>
 <div style="padding: auto;">
-<mat-form-field>
+<!-- <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Dominos" #input>
-  </mat-form-field>
+  </mat-form-field> -->
 
 
-<div class="container" style="background-color: rgb(255, 230, 0);">
+<div class="container" style="background-color: rgb(247, 223, 9);">
   <div>
-    <h1>Recommended</h1>
+    <h1 style="text-align: center;">Recommended</h1>
   </div>
-    <mat-card class="example-card-SuggestedDish" *ngFor="let dishes of suggestedDishes">
+    <mat-card class="example-card-SuggestedDish" *ngFor="let dishes of suggestedDishes" (click)="getDishList(dishes)">
+      <mat-card-title class="RestaurantDishName">{{dishes.dish_Name}}</mat-card-title>
       <img mat-card-image [src] ="dishes.dish_Path" class = "SuggestedDishImage">
-          <mat-card-title class="RestaurantDishName">{{dishes.dish_Name}}</mat-card-title>
-        <!-- <mat-card-actions style="color: white;"> -->
-          <button mat-button style="font-size: 10px;" color="success">{{dishes.Ratings}}
-            <mat-icon style="color: white;">grade</mat-icon>
-        </button>
-        <!-- </mat-card-actions> -->
       </mat-card>
 </div>
 
 <div class="container">
     <mat-card class="example-card" *ngFor="let restaurants of availableRestaurants" (click)="getDishList(restaurants)">
-        <mat-card-header>
-          <mat-card-title class="RestaurantName">{{restaurants.username}}</mat-card-title>
-          <mat-card-subtitle></mat-card-subtitle>
-        </mat-card-header>
+        <mat-card-title class="RestaurantName">{{restaurants.username}}</mat-card-title>
         <img mat-card-image [src]="restaurants.restaurant_Image" class = "DishImage">
 
-        <mat-card-actions style="color: white;">
-          <button mat-button style="font-size: 30px;" color="success">{{restaurants.ratings}}
-            <mat-icon style="color: white;">grade</mat-icon>
-        </button>
-        </mat-card-actions>
+       
       </mat-card>
     </div>
 </div>

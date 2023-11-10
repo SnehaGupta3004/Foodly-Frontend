@@ -1,14 +1,14 @@
 .container{
-    height: 200px;
-    width: 1000px;
+    height: 100px;
+    width: 400px;
 }
 
 mat-dialog-title{
-    font-size: 50px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 mat-card-header{
-    font-size: 60px;
+    font-size: 20px;
     font-weight: bolder;
 }

@@ -65,10 +65,16 @@ export class HomeComponent implements OnInit{
 
 
     getDishList(data:any){
+      debugger
       localStorage.setItem('OnClickRestaurantMobileNo',data.mobile_No);
       localStorage.setItem('OnClickRestaurantRoleID',data.role_ID);
       this.router.navigateByUrl('/customer-restaurant-dish-list');
     }
+
+
+    // getSuggestedRestaurantsDishList(data:any){
+    //   localStorage.setItem('OnClickSuggestedRestaurantMobileNo',data.restaurant_ID);
+    // }
 
     getSuggestedDishes(){
       debugger

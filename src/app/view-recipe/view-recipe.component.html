@@ -1,0 +1,88 @@
+
+
+
+<ng-container>
+    <div class="table-container" style = "padding-left: 600px; padding-right: 600px;">
+        <table  mat-table [dataSource]="dataSource" matSort>
+    
+          <!-- ID Column -->
+          <!-- <ng-container matColumnDef="dish_ID">
+            <th mat-header-cell [hidden]="show" *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell [hidden]="show" *matCellDef="let row"> {{row.dish_ID}} </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="sequence">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sequence </th>
+            <td mat-cell *matCellDef="let row"> {{row.sequence}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="ingredienT_NAME">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ingredient NAME </th>
+            <td mat-cell *matCellDef="let row"> {{row.ingredienT_NAME}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+            <td mat-cell *matCellDef="let row"> {{row.quantity}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="unit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit </th>
+            <td mat-cell *matCellDef="let row"> {{row.unit}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="remarks">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Remarks </th>
+            <td mat-cell *matCellDef="let row"> {{row.remarks}}</td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button class="RemoveButton" (click)="removeProduct(row)">Remove from cart</button>
+            </td>
+          </ng-container> -->
+         
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+        </table>
+    </div>
+
+    <!-- <div style = "padding-left: 1000px; padding-right: 800px;">
+        <div class="container">
+          <mat-card class="example-card"> 
+            <mat-card-header> 
+              <mat-card-title>Item Total: {{allProducts}}</mat-card-title> 
+              <mat-card-title>Tax & Restaurant Charges: {{TaxCharges}}</mat-card-title> 
+              <br>
+              <mat-card-title>Delivery Charge: 49.00 </mat-card-title> 
+              <br>
+              <mat-card-title>Grand Total: {{GrandTotal}} </mat-card-title>
+            </mat-card-header> 
+            <br>
+            <mat-card-actions> 
+              <button (click)="cartPageName()" mat-stroked-button  style="float: right; font-size: x-large;color: blue;" routerLink="/user-address-list" >
+                Select Address 
+              </button> 
+            </mat-card-actions> 
+          </mat-card>
+  
+          <mat-card class="example-card"> 
+            <mat-card-header> 
+              <mat-card-title>Address</mat-card-title> 
+              <br>
+            </mat-card-header> 
+            <mat-card-content style="font-size: large;">
+              {{addressDetails}}
+            </mat-card-content>
+            <br>
+          </mat-card>
+        </div>
+    </div>
+
+    <div class="container">
+      <img src="" alt="">
+      <button (click)="openDialog()" style="color:red; font-size: 80px;border: transparent;float: right;">Place Order</button>
+      </div> -->
+</ng-container>

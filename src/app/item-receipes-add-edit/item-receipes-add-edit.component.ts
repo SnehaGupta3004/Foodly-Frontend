@@ -44,14 +44,18 @@ export class ItemReceipesAddEditComponent implements OnInit{
     DISH_ID:localStorage.getItem('dataDishID')
   };
 
+  groceryListObj:any={
+    cateogry_id:0
+  }
+
   get receipesFormGroups () {
     return this.receipeItemForm.get('Recipe_Steps') as FormArray
   }
 
-  sequence = new FormControl('', VALIDATORS);
-  ingredienT_NAME = new FormControl('', VALIDATORS);
-  quantity= new FormControl('', VALIDATORS);
-  unit= new FormControl('', VALIDATORS);
+  // sequence = new FormControl('', VALIDATORS);
+  // ingredienT_NAME = new FormControl('', VALIDATORS);
+  // quantity= new FormControl('', VALIDATORS);
+  // unit= new FormControl('', VALIDATORS);
 
   receipeItemForm: FormGroup;  
   Units: any = ['teaspoons', 'tablespoons', 'cups', 'grams','pounds','litres'];
@@ -66,14 +70,14 @@ export class ItemReceipesAddEditComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public value:any,
   )
   {
-    this.createForm();
+   // this.createForm();
 
     this.receipeItemForm=this._fb.group({
       Recipe_Steps:this._fb.array([
         this._fb.group({
           sequence:'',
           ingredienT_NAME:'',
-          //ingredienT_ID:localStorage.getItem('ingredienT_ID'),
+          ingredienT_ID:Number(localStorage.getItem('ingredienT_ID')),
           quantity:'',
           unit:'',
           remarks:'',
@@ -89,53 +93,44 @@ export class ItemReceipesAddEditComponent implements OnInit{
   }
 
   
-  createForm(){
-    this.receipeItemForm=new FormGroup({
-      Recipe_Steps:new FormArray([
-      new FormGroup({
-      sequence:new FormControl(''),
-      ingredienT_NAME:new FormControl(''),
-      //ingredienT_ID:new FormControl(localStorage.getItem('ingredienT_ID')),
-      quantity:new FormControl(''),
-      unit:new FormControl(''),
-      remarks:new FormControl(''),
-      restauranT_ID:new FormControl(localStorage.getItem('resultsmobile_No')) ,
-      disH_ID:new FormControl(localStorage.getItem('dataDishID')) 
-    })
-  ])
-    });
-  }
+  // createForm(){
+  //   this.receipeItemForm=new FormGroup({
+  //     Recipe_Steps:new FormArray([
+  //     new FormGroup({
+  //     sequence:new FormControl(''),
+  //     ingredienT_NAME:new FormControl(''),
+  //     quantity:new FormControl(''),
+  //     unit:new FormControl(''),
+  //     remarks:new FormControl(''),
+  //     restauranT_ID:new FormControl(localStorage.getItem('resultsmobile_No')) ,
+  //     disH_ID:new FormControl(localStorage.getItem('dataDishID')) 
+  //   })
+  // ])
+  //   });
+  // }
 
   
 
   addNewRow() { 
-    debugger
     const control = <FormArray>this.receipeItemForm.controls['Recipe_Steps'];
     debugger
     control.push(
       new FormGroup({
         sequence:new FormControl(''),
         ingredienT_NAME:new FormControl(''),
-        //ingredienT_ID:new FormControl(localStorage.getItem('ingredienT_ID')),
+        ingredienT_ID:new FormControl(localStorage.getItem('ingredienT_ID')),
         quantity:new FormControl(''),
         unit:new FormControl(''),
         remarks:new FormControl(''),
         restauranT_ID:new FormControl(localStorage.getItem('resultsmobile_No')) ,
         disH_ID:new FormControl(localStorage.getItem('dataDishID')) 
-    })
+      })
     );
   }  
     
-  changeIngredient(value:any){
-    debugger
-    console.log(value);
-    localStorage.setItem('ingredienT_ID',value.ingredient_Id)
-  }
-
-
 
   groceryList!:GroceryItems[];
-  
+  category_id!:0
   data:any;
  
   ngOnInit(): void {
@@ -149,8 +144,9 @@ export class ItemReceipesAddEditComponent implements OnInit{
 
   getGroceryList(){
   debugger
-  this._resReceipesServiceService.getGroceryList(this.data).subscribe((res:any)=>{
-    if(res) {
+  this._resReceipesServiceService.getGroceryList(this.groceryListObj).subscribe((res:any)=>{
+    if(res) 
+    {
       this.groceryList = res.results[0];
       console.log(this.groceryList);
     }
@@ -162,8 +158,8 @@ export class ItemReceipesAddEditComponent implements OnInit{
     debugger
       this._resReceipesService.getReceipesSteps(this.ReceipeObj).subscribe((res:any)=>{
         console.log('res',res);
+        debugger
         this.availableReceipes=res.results[0];
-        //  for(var items of res.results)this.availableReceipes.push(items);
            debugger
           this.dataSource=new MatTableDataSource<Recipe>(this.availableReceipes);
           this.dataSource.sort=this.sort;
@@ -172,10 +168,31 @@ export class ItemReceipesAddEditComponent implements OnInit{
       }
   
   onFormSubmit(){
+    let dataforPass=[];
     debugger
+    console.log(this.receipeItemForm.controls['Recipe_Steps'])
+      for(let item of this.receipeItemForm.controls['Recipe_Steps'].value){
+        let dataItem={
+          "srno":item.srno,
+          "sequence": item.sequence,
+          "ingredienT_ID":Number(item.ingredienT_ID),
+          "ingredienT_NAME":item.ingredienT_NAME,
+          "quantity":item.quantity,
+          "unit":item.unit,
+          "remarks":item.remarks,
+          "restauranT_ID": item.restauranT_ID,
+          "disH_ID": item.disH_ID
+        }
+        dataforPass.push(dataItem)
+      }
+
+      let b={
+        "Recipe_Steps": dataforPass
+    }
+
     if (this.receipeItemForm.valid) {
     if(this.data){
-    this._resReceipesService.updateDishesReceipes(this.receipeItemForm.value).subscribe({
+    this._resReceipesService.updateDishesReceipes(b).subscribe({
     next: (val: any) => {
       this._coreService.openSnackBar('Receipe updated successfully','Done');
       this._dialogRef.close(true);
@@ -188,7 +205,7 @@ export class ItemReceipesAddEditComponent implements OnInit{
 else{
   debugger
   console.log(this.receipeItemForm.value)
-  this._resReceipesService.addDishesReceipes(this.receipeItemForm.value).subscribe({
+  this._resReceipesService.addDishesReceipes(b).subscribe({
     next: (val: any) => {
       this._coreService.openSnackBar('Receipe added successfully','Done');
       this._dialogRef.close(true);
@@ -203,4 +220,12 @@ else{
     }
 
 
-}
+
+    getElementId(elemRef:any){
+    debugger
+    localStorage.setItem('ingredienT_ID',elemRef.ingredient_Id)
+    // alert("The button's id is: " + elementId);  // Prompt element's Id
+    }
+  
+  }
+

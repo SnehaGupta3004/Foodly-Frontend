@@ -41,6 +41,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GroceryComponent } from './grocery/grocery.component';
 import { FilterPipe } from 'ngx-filter-pipe';
 import { GcartPageComponent } from './gcart-page/gcart-page.component';
+import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { GcartPageComponent } from './gcart-page/gcart-page.component';
     OrderPlacedComponent,
     DashboardComponent,
     GroceryComponent,
-    GcartPageComponent
+    GcartPageComponent,
+    ViewRecipeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
